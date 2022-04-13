@@ -1,15 +1,33 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"nginx"},"name":"nginx","namespace":"argocd-app"},"spec":{"ports":[{"port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"nginx"},"type":"NodePort"}}
+  creationTimestamp: "2022-04-13T07:22:29Z"
   labels:
     app: nginx
   name: nginx
   namespace: argocd-app
+  resourceVersion: "27311"
+  uid: b6fe2170-d9d6-4fa9-b650-83ad46dcb174
 spec:
+  clusterIP: 10.43.190.81
+  clusterIPs:
+  - 10.43.190.81
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
-  - port: 80
+  - nodePort: 31198
+    port: 80
     protocol: TCP
     targetPort: 80
   selector:
     app: nginx
+  sessionAffinity: None
   type: NodePort
+status:
+  loadBalancer: {}
